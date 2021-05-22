@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { Grid, Row, Col } from "react-flexbox-grid";
+import CounterPresenter from "./Components/CounterPresenter";
 
 //Local state in react
 const Counter = () => {
@@ -15,13 +16,11 @@ const Counter = () => {
 
   return (
     <div>
-      <p>{counter1}</p>
-      <button type="button" onClick={() => onIncrement()}>
-        Increment
-      </button>
-      <button type="button" onClick={() => onDecrement()}>
-        Decrement
-      </button>
+      <CounterPresenter
+        counter1={counter1}
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
+      />
     </div>
   );
 };
