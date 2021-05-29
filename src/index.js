@@ -5,59 +5,30 @@ import CounterPresenter from "./Components/CounterPresenter";
 import Search from "./Components/Search";
 import SearchableList from "./Components/SearchableList";
 
-//Local state in react
-const Counter = () => {
-  const [counter1, setCounter1] = useState(0);
+const App = () => {
+  // constructor(props) {
+  //   super(props);
 
-  const onIncrement = () => {
-    setCounter1((preVal) => preVal + 1);
-  };
-  const onDecrement = () => {
-    setCounter1((preVal) => preVal - 1);
-  };
+  //   this.state = {
+  //     family: [
+  //       { id: 1, name: "Alejandro" },
+  //       { id: 2, name: "Santiago" },
+  //       { id: 3, name: "Karen" }
+  //     ]
+  //   };
+  // }
 
   return (
-    <div>
-      <CounterPresenter
-        counter1={counter1}
-        onIncrement={onIncrement}
-        onDecrement={onDecrement}
-      />
-    </div>
+    <Grid>
+      <Row>
+        <Col>{/* <Counter /> */}</Col>
+        <Col>{/* <Search /> */}</Col>
+      </Row>
+      <Row>
+        <Col>{/* <SearchableList list={this.state.family} /> */}</Col>
+      </Row>
+    </Grid>
   );
 };
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      family: [
-        { id: 1, name: "Alejandro" },
-        { id: 2, name: "Santiago" },
-        { id: 3, name: "Karen" }
-      ]
-    };
-  }
-  render() {
-    return (
-      <Grid>
-        <Row>
-          <Col>
-            <Counter />
-          </Col>
-          <Col>
-            <Search />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <SearchableList list={this.state.family} />
-          </Col>
-        </Row>
-      </Grid>
-    );
-  }
-}
 
 ReactDOM.render(<App />, document.getElementById("container"));
