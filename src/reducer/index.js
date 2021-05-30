@@ -1,9 +1,11 @@
+import { TODO_ADD, TODO_TOGGLE } from "../constants/index";
+
 function reducer(state, action) {
   switch (action.type) {
-    case "TODO_ADD": {
+    case TODO_ADD: {
       return applyAddTodo(state, action);
     }
-    case "TODO_TOGGLE": {
+    case TODO_TOGGLE: {
       return applyToggleTodo(state, action);
     }
     default:
@@ -12,7 +14,10 @@ function reducer(state, action) {
 }
 
 function applyAddTodo(state, action) {
-  return state.concat(action.todo);
+  //Minimum Action Payload. The completed property is defined in the reducer
+  //in order to reduce the action payload to its minimum.
+  const todo = Object.assign({}, action.todo, { completed: false });
+  return state.concat(todo);
 }
 
 function applyToggleTodo(state, action) {
@@ -22,3 +27,5 @@ function applyToggleTodo(state, action) {
       : todo
   );
 }
+
+export default reducer;
