@@ -1,6 +1,12 @@
-import { createStore } from "redux";
-import reducer from "../reducer/index";
+import { createStore, combineReducers } from "redux";
+import todoReducer from "../reducer/index";
+import filterReducer from "../reducer/filterReducer";
 
-const store = createStore(reducer, []);
+const rootReducer = combineReducers({
+  todoState: todoReducer,
+  filterState: filterReducer
+});
+
+const store = createStore(rootReducer);
 
 export default store;

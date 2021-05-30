@@ -59,8 +59,8 @@ const ReduxPractice = () => {
     <div>
       <div>
         <ul>
-          {store.getState().length != 0 &&
-            store.getState().map((item, idx) => (
+          {store.getState().todoState.length != 0 &&
+            store.getState().todoState.map((item, idx) => (
               <li key={idx}>
                 {item.name} {item.completed ? "✅" : "❎"}{" "}
               </li>

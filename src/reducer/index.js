@@ -1,6 +1,6 @@
 import { TODO_ADD, TODO_TOGGLE } from "../constants/index";
 
-function reducer(state, action) {
+function todoReducer(state = [], action) {
   switch (action.type) {
     case TODO_ADD: {
       return applyAddTodo(state, action);
@@ -28,4 +28,4 @@ function applyToggleTodo(state, action) {
   );
 }
 
-export default reducer;
+export default todoReducer;
