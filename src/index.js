@@ -7,33 +7,30 @@ import Search from "./Components/Search";
 import SearchableList from "./Components/SearchableList";
 import ReduxPractcie from "./Components/ReduxPractice";
 
+import TodoApp from "./Components/TodoApp";
+
+import store from "./store/index";
+import { doAddTodo, doToggleTodo } from "./actions/todoActions";
+
 const App = () => {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     family: [
-  //       { id: 1, name: "Alejandro" },
-  //       { id: 2, name: "Santiago" },
-  //       { id: 3, name: "Karen" }
-  //     ]
-  //   };
-  // }
-
   return (
     <Grid>
-      <Row>
-        {/* <Col><Counter /> </Col> */}
-        {/* <Col> <Search /> </Col> */}
-        <Col>
-          <ReduxPractcie />
-        </Col>
-      </Row>
-      <Row>
-        <Col>{/* <SearchableList list={this.state.family} /> */}</Col>
-      </Row>
+      {/* <Row>
+        <Col>{ <SearchableList list={this.state.family} /> }</Col>
+      </Row> */}
     </Grid>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("container"));
+const render = () => {
+  ReactDOM.render(
+    <TodoApp
+      todos={store.getState().todoState}
+      onToggleTodo={(id) => store.dispatch(doToggleTodo(id))}
+    />,
+    document.getElementById("container")
+  );
+};
+
+store.subscribe(render);
+render();

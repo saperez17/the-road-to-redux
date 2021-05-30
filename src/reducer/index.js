@@ -1,6 +1,11 @@
 import { TODO_ADD, TODO_TOGGLE } from "../constants/index";
 
-function todoReducer(state = [], action) {
+const todos = [
+  { id: 0, name: "Learn Redux" },
+  { id: 1, name: "Learn Advanced React" }
+];
+
+function todoReducer(state = todos, action) {
   switch (action.type) {
     case TODO_ADD: {
       return applyAddTodo(state, action);
