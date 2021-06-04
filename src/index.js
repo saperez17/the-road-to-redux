@@ -13,6 +13,8 @@ import store from "./store/index";
 import { doAddTodo, doToggleTodo } from "./actions/todoActions";
 
 import { Provider, connect } from "react-redux";
+import TodoList from "./Components/TodoList";
+import TodoItem from "./Components/TodoItem";
 
 //react-redux. A library to wire up Redux with React.
 //Provider cmpnt: Gives access to the Redux store. Should
@@ -46,15 +48,17 @@ function mapDispatchToProps(dispatch) {
 
 const ConnectedTodoApp = connect(mapStateToProps, mapDispatchToProps)(TodoApp);
 
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <ConnectedTodoApp
+//     />
+//   </Provider>,
+//   document.getElementById("container")
+// );
+
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedTodoApp
-    // todos={store.getState().todoState}
-    // onToggleTodo={(id) => store.dispatch(doToggleTodo(id))}
-    />
+    <TodoApp />
   </Provider>,
   document.getElementById("container")
 );
-
-// store.subscribe(render);
-// render();

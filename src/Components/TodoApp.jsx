@@ -1,8 +1,17 @@
 import React from "react";
 import TodoList from "./TodoList";
+import { connect } from "react-redux";
 
-const TodoApp = ({ todos, onToggleTodo }) => {
-  return <TodoList todos={todos} onToggleTodo={onToggleTodo} />;
+function mapStateToProps(state) {
+  return {
+    todos: state.todoState
+  };
+}
+
+const ConnectedTodoList = connect(mapStateToProps)(TodoList);
+
+const TodoApp = () => {
+  return <ConnectedTodoList />;
 };
 
 export default TodoApp;
